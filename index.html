@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    #boeing {
+      width: 50%;
+      height: 100%;
+      background-color: #007bff;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    #airbus {
+      width: 50%;
+      height: 100%;
+      background-color: #ff0000;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .plane-list {
+      list-style-type: none;
+      padding: 0;
+      text-align: center;
+    }
+    .plane-list li {
+      cursor: pointer;
+      margin: 10px 0;
+    }
+  </style>
+  <title>Planes Information</title>
+</head>
+<body>
+  <div id="boeing">
+    <h2>Boeing</h2>
+    <ul class="plane-list" id="boeingPlanes">
+      <li onclick="showPlaneInfo('Boeing 737')">Boeing 737</li>
+      <li onclick="showPlaneInfo('Boeing 747')">Boeing 747</li>
+      <li onclick="showPlaneInfo('Boeing 777')">Boeing 777</li>
+    </ul>
+    <button onclick="resetBoeing()">Back</button>
+  </div>
+  <div id="airbus">
+    <h2>Airbus</h2>
+    <ul class="plane-list" id="airbusPlanes">
+      <li onclick="showPlaneInfo('Airbus A320')">Airbus A320</li>
+      <li onclick="showPlaneInfo('Airbus A380')">Airbus A380</li>
+      <li onclick="showPlaneInfo('Airbus A350')">Airbus A350</li>
+    </ul>
+    <button onclick="resetAirbus()">Back</button>
+  </div>
+
+  <script>
+    function showPlaneInfo(plane) {
+      if (plane.includes('Boeing')) {
+        document.getElementById('boeingPlanes').innerHTML = `<li>${plane}</li>
+          <li onclick="showInfo('Boeing 737')">Boeing 737</li>
+          <li onclick="showInfo('Boeing 747')">Boeing 747</li>
+          <li onclick="showInfo('Boeing 777')">Boeing 777</li>`;
+      } else {
+        document.getElementById('airbusPlanes').innerHTML = `<li>${plane}</li>
+          <li onclick="showInfo('Airbus A320')">Airbus A320</li>
+          <li onclick="showInfo('Airbus A380')">Airbus A380</li>
+          <li onclick="showInfo('Airbus A350')">Airbus A350</li>`;
+      }
+    }
+    function showInfo(plane) {
+      alert(`Basic information about ${plane}`);
+    }
+    function resetBoeing() {
+      document.getElementById('boeingPlanes').innerHTML = `<li onclick="showPlaneInfo('Boeing')">Boeing</li>`;
+    }
+    function resetAirbus() {
+      document.getElementById('airbusPlanes').innerHTML = `<li onclick="showPlaneInfo('Airbus')">Airbus</li>`;
+    }
+  </script>
+</body>
+</html>
